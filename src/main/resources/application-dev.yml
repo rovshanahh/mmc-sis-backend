@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sis_db
+    username: sis_user
+    password: sis_pass
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level requestId=%X{requestId} user=%X{user} %logger{36} - %msg method=%X{method} path=%X{path} status=%X{status} durationMs=%X{durationMs}%n"
+  level:
+    HTTP: INFO
+
+app:
+  security:
+    jwt:
+      secret: "my-super-secure-jwt-secret-key-that-is-at-least-64-characters-long-123456"
+      expiration-minutes: 60
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never

@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: sis_db
+    environment:
+      POSTGRES_DB: sis_db
+      POSTGRES_USER: sis_user
+      POSTGRES_PASSWORD: sis_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - sis_pgdata:/var/lib/postgresql/data
+
+volumes:
+  sis_pgdata:
